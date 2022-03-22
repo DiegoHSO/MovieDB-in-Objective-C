@@ -9,6 +9,7 @@
 
 @interface MovieViewController : UIViewController
 
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *movies;
 
 @end
-

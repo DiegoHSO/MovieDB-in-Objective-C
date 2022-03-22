@@ -31,6 +31,9 @@
 		F1F5C4D727E8FACC005D5393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1F5C4D827E8FACC005D5393 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F1F5C4DF27E8FCFA005D5393 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F1F5C4E127EA38BE005D5393 /* Movie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
+		F1F5C4E227EA3CE5005D5393 /* Genre.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Genre.h; sourceTree = "<group>"; };
+		F1F5C4E327EA4C31005D5393 /* MovieCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +71,10 @@
 				F1F5C4C627E8FAC9005D5393 /* SceneDelegate.h */,
 				F1F5C4C727E8FAC9005D5393 /* SceneDelegate.m */,
 				F1F5C4C927E8FAC9005D5393 /* MovieViewController.h */,
+				F1F5C4E127EA38BE005D5393 /* Movie.h */,
+				F1F5C4E227EA3CE5005D5393 /* Genre.h */,
 				F1F5C4CA27E8FAC9005D5393 /* MovieViewController.m */,
+				F1F5C4E327EA4C31005D5393 /* MovieCell.h */,
 				F1F5C4DF27E8FCFA005D5393 /* Main.storyboard */,
 				F1F5C4D227E8FACC005D5393 /* Assets.xcassets */,
 				F1F5C4D427E8FACC005D5393 /* LaunchScreen.storyboard */,

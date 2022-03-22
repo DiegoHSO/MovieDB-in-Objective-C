@@ -11,7 +11,7 @@
         <!--Movies-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MovieListViewController" customModule="MovieDB_in_Objective_C" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MovieViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,14 +41,14 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="movie" rowHeight="140" id="9h7-Ng-YOv" customClass="MovieTableViewCell" customModule="MovieDB_in_Objective_C" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="movie" rowHeight="140" id="9h7-Ng-YOv" customClass="MovieCell">
                                         <rect key="frame" x="0.0" y="84.5" width="414" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9h7-Ng-YOv" id="1ID-Ah-mAH">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="745" translatesAutoresizingMaskIntoConstraints="NO" id="Du1-17-Hg6">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="745" translatesAutoresizingMaskIntoConstraints="NO" id="Du1-17-Hg6" customClass="PlayerCell">
                                                     <rect key="frame" x="15" y="10" width="79" height="120"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="79" id="62l-aN-EVb"/>
@@ -96,14 +96,17 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="descriptionLabel" destination="j3D-wS-ehA" id="nfR-lz-pGN"/>
-                                            <outlet property="posterImage" destination="Du1-17-Hg6" id="Xaw-rw-OYq"/>
-                                            <outlet property="rateLabel" destination="kCf-yJ-PHV" id="wM6-PP-Ufd"/>
-                                            <outlet property="starImage" destination="wxz-fd-VCV" id="Gox-Uc-x1C"/>
-                                            <outlet property="titleLabel" destination="3cZ-PJ-UnN" id="uXC-jE-Dd9"/>
+                                            <outlet property="descriptionLabel" destination="j3D-wS-ehA" id="4pB-kH-wIk"/>
+                                            <outlet property="nameLabel" destination="3cZ-PJ-UnN" id="RWN-PO-hSi"/>
+                                            <outlet property="poster" destination="Du1-17-Hg6" id="AZ0-Dn-f1j"/>
+                                            <outlet property="rateLabel" destination="kCf-yJ-PHV" id="ZWS-ct-AaJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="nuS-0x-Y8F"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="P2F-5W-mIV"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -117,6 +120,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Movies" largeTitleDisplayMode="always" id="2oU-lw-Y9i"/>
                     <connections>
+                        <outlet property="tableView" destination="r2s-nf-ICf" id="qtm-YT-bOc"/>
                         <segue destination="cLS-Ph-pge" kind="show" identifier="detail" id="Pgw-GJ-a7n"/>
                     </connections>
                 </viewController>
