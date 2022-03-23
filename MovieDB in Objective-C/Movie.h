@@ -14,7 +14,7 @@
     
 @property (nonatomic, assign) int *movieID;
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *description;
+@property (nonatomic, copy) NSString *movieDescription;
 @property (nonatomic, copy) NSNumber *rating;
 @property (nonatomic, copy) NSString *posterURL;
 @property (nonatomic, copy) UIImage *poster;
