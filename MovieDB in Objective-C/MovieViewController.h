@@ -8,7 +8,4 @@
 #import <UIKit/UIKit.h>
 
 @interface MovieViewController : UITableViewController
-
-@property (nonatomic, strong) NSMutableArray *movies;
-
 @end

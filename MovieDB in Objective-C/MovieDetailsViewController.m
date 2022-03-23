@@ -4,75 +4,74 @@
 //
 //  Created by Diego Henrique on 23/03/22.
 //
+//
 
-//#import <Foundation/Foundation.h>
-//#import "Movie"
-//#import "MovieCell.h"
-//#import "Movie.h"
-//
-//@interface MovieViewController ()
-//
-//
-//@end
-//
-//@implementation MovieViewController
-//
-//- (void)viewDidLoad {
-//    [super viewDidLoad];
-//    // Do any additional setup after loading the view.
-//}
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    return 1;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    return [self.movies count] + 1;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *titleCellIdentifier = @"label";
-//    static NSString *movieCellIdentifier = @"movie";
-//    
-//    if (indexPath.row > 0) {
-//        MovieCell *cell = (MovieCell *)[tableView dequeueReusableCellWithIdentifier:titleCellIdentifier];
-//        
-//        Movie *movie = (self.movies)[indexPath.row];
-//
-//        cell.nameLabel.text = movie.title;
-//        cell.descriptionLabel.text = movie.description;
-//        cell.rateLabel.text = movie.rating.doubleValue == 0 ? @"TBD" : movie.rating.stringValue;
-//        cell.poster.image = movie.poster;
-//        cell.poster.layer.cornerRadius = 10;
-//        
-//        return cell;
-//        
-//        
-//    } else {
-//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:movieCellIdentifier];
-//        if (cell == nil) {
-//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-//                                          reuseIdentifier:movieCellIdentifier];
-//        }
-//        
-//        return cell;
-//        
-//    }
-//    
-//}
-//
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    if ([segue.identifier isEqualToString:@"detail"]) {
-//
-//        UINavigationController *navigationController = segue.destinationViewController;
-//        MovieDetailsViewController *MovieDetailsViewController = [navigationController viewControllers][0];
-//      //  playerDetailsViewController.delegate = self;
-//    }
-//}
-//
-//
-//@end
+#import "MovieDetailsViewController.h"
+#import "MovieDetailCell.h"
+#import "MovieDetailOverviewCell.h"
+#import "Movie.h"
+
+@interface MovieDetailsViewController ()
+
+
+@end
+
+@implementation MovieDetailsViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.tableView.separatorColor = [UIColor clearColor];
+    // Do any additional setup after loading the view.
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *movieDetailCellIdentifier = @"movieDetail";
+    static NSString *descriptionCellIdentifier = @"movieDetailOverview";
+
+    if (indexPath.row == 0) {
+        MovieDetailCell *cell = (MovieDetailCell *)[tableView dequeueReusableCellWithIdentifier:movieDetailCellIdentifier];
+
+        cell.nameLabel.text = self.movie.title;
+        
+        NSString *genres;
+        for (int i = 0; i < self.movie.genres.count; i++) {
+            if (i == self.movie.genres.count-1) {
+                genres = @"\(self.movie.genres[i])";
+            } else {
+                genres = @"\(self.movie.genres[i]), ";
+            }
+        }
+        
+        cell.genresLabel.text = genres;
+        cell.rateLabel.text = self.movie.rating.doubleValue == 0 ? @"TBD" : self.movie.rating.stringValue;
+        cell.poster.image = self.movie.poster;
+        cell.poster.layer.cornerRadius = 10;
+
+        return cell;
+
+
+    } else {
+        MovieDetailOverviewCell *cell = (MovieDetailOverviewCell *)[tableView dequeueReusableCellWithIdentifier:descriptionCellIdentifier];
+        
+        cell.overviewLabel.text = self.movie.movieDescription;
+        cell.descriptionLabel.text = @"Overview";
+
+        return cell;
+
+    }
+
+}
+
+@end
