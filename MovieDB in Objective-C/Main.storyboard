@@ -96,7 +96,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="descriptionLabel" destination="j3D-wS-ehA" id="4pB-kH-wIk"/>
                                             <outlet property="nameLabel" destination="3cZ-PJ-UnN" id="RWN-PO-hSi"/>
                                             <outlet property="poster" destination="Du1-17-Hg6" id="AZ0-Dn-f1j"/>
                                             <outlet property="rateLabel" destination="kCf-yJ-PHV" id="ZWS-ct-AaJ"/>
@@ -120,7 +119,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Movies" largeTitleDisplayMode="always" id="2oU-lw-Y9i"/>
                     <connections>
-                        <outlet property="tableView" destination="r2s-nf-ICf" id="qtm-YT-bOc"/>
                         <segue destination="cLS-Ph-pge" kind="show" identifier="detail" id="Pgw-GJ-a7n"/>
                     </connections>
                 </viewController>
@@ -195,13 +193,6 @@
                                                 <constraint firstItem="uPY-R6-ECb" firstAttribute="leading" secondItem="Jt6-1z-d53" secondAttribute="leadingMargin" id="yrE-kX-if3"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="genresLabel" destination="WvW-FB-e5e" id="CJ8-YJ-GKL"/>
-                                            <outlet property="posterImage" destination="uPY-R6-ECb" id="zK4-oy-18d"/>
-                                            <outlet property="ratingLabel" destination="zOx-dF-R2z" id="Zqc-ZL-fEZ"/>
-                                            <outlet property="starImage" destination="NAS-dZ-wJM" id="qWF-rC-ibs"/>
-                                            <outlet property="titleLabel" destination="Scx-Ks-RLi" id="Now-nH-R4Y"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="moviedetailoverview" rowHeight="469" id="SZO-IK-ml5" customClass="MovieDetailOverviewTableViewCell" customModule="MovieDB_in_Objective_C" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="315.5" width="414" height="469"/>
@@ -240,9 +231,6 @@ Simba idolises his father, King Mufasa, and takes to heart his own royal destiny
                                                 <constraint firstItem="99y-IU-3kw" firstAttribute="top" secondItem="RYl-tF-MVp" secondAttribute="topMargin" constant="21" id="gEx-rc-jww"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="descriptionLabel" destination="cTe-XO-sTo" id="m63-vA-ltJ"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -259,9 +247,6 @@ Simba idolises his father, King Mufasa, and takes to heart his own royal destiny
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Details" largeTitleDisplayMode="never" id="8hR-06-8zU"/>
-                    <connections>
-                        <outlet property="movieDetailTableView" destination="urk-aI-udw" id="VeN-Bd-4Ix"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ORR-CK-7rE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

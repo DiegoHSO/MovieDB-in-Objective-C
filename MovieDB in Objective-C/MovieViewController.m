@@ -19,8 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   
-    
 //    _movies = [NSMutableArray arrayWithCapacity:3];
     
     Movie *movie1 = [[Movie alloc] init];
@@ -68,7 +66,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.movies count] + 1;
+    return [self.movies count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,7 +80,7 @@
         Movie *movie = (self.movies)[indexPath.row];
 
         cell.nameLabel.text = movie.title;
-        cell.descriptionLabel.text = movie.description;
+        //cell.descriptionLabel.text = movie.description;
         cell.rateLabel.text = movie.rating.doubleValue == 0 ? @"TBD" : movie.rating.stringValue;
         cell.poster.image = movie.poster;
         cell.poster.layer.cornerRadius = 10;
@@ -112,6 +110,5 @@
       //  playerDetailsViewController.delegate = self;
     }
 }
-
 
 @end
