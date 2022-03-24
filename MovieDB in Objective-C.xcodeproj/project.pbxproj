@@ -20,6 +20,7 @@
 		F1F5C4E827EB7FD2005D5393 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F5C4E727EB7FD2005D5393 /* Movie.m */; };
 		F1F5C4ED27EBA6EC005D5393 /* MovieDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F5C4EC27EBA6EC005D5393 /* MovieDetailCell.m */; };
 		F1F5C4F027EBA70F005D5393 /* MovieDetailOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F5C4EF27EBA70F005D5393 /* MovieDetailOverviewCell.m */; };
+		F1F5C4F327ECB774005D5393 /* MovieDBAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F5C4F227ECB774005D5393 /* MovieDBAPI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		F1F5C4EC27EBA6EC005D5393 /* MovieDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieDetailCell.m; sourceTree = "<group>"; };
 		F1F5C4EE27EBA6FE005D5393 /* MovieDetailOverviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieDetailOverviewCell.h; sourceTree = "<group>"; };
 		F1F5C4EF27EBA70F005D5393 /* MovieDetailOverviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieDetailOverviewCell.m; sourceTree = "<group>"; };
+		F1F5C4F127ECB766005D5393 /* MovieDBAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieDBAPI.h; sourceTree = "<group>"; };
+		F1F5C4F227ECB774005D5393 /* MovieDBAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieDBAPI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,8 @@
 				F1F5C4D427E8FACC005D5393 /* LaunchScreen.storyboard */,
 				F1F5C4D727E8FACC005D5393 /* Info.plist */,
 				F1F5C4D827E8FACC005D5393 /* main.m */,
+				F1F5C4F127ECB766005D5393 /* MovieDBAPI.h */,
+				F1F5C4F227ECB774005D5393 /* MovieDBAPI.m */,
 				F1F5C4CF27E8FAC9005D5393 /* MovieDB_in_Objective_C.xcdatamodeld */,
 			);
 			path = "MovieDB in Objective-C";
@@ -176,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F5C4F327ECB774005D5393 /* MovieDBAPI.m in Sources */,
 				F1F5C4ED27EBA6EC005D5393 /* MovieDetailCell.m in Sources */,
 				F1F5C4D927E8FACC005D5393 /* main.m in Sources */,
 				F1F5C4CB27E8FAC9005D5393 /* MovieViewController.m in Sources */,
