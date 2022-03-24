@@ -1,16 +1,16 @@
-////
-////  MovieDBAPI.h
-////  MovieDB in Objective-C
-////
-////  Created by Diego Henrique on 24/03/22.
-////
 //
-//#import <UIKit/UIKit.h>
+//  MovieDBAPI.h
+//  MovieDB in Objective-C
 //
-//@interface MovieDBAPI : NSObject
-//- (void)requestGenres:([[NSString: id]]) (^) (void));
-//- (NSString)requestTotalPagesWithURL:(int) (^) (void));
-//- (NSString)requestMoviePosterWithURL:(UIImage) (^) (void));
-//- (int)requestPopularMoviesFromPage:([[NSString: id]]) (^) (void));
-//- (int)requestNowPlayingMoviesFromPage:([[NSString: id]]) (^) (void));
-//@end
+//  Created by Diego Henrique on 24/03/22.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface MovieDBAPI : NSObject
+- (void)requestGenres: (void (^)(NSDictionary *, NSError *))completion;
+- (void)requestTotalPagesWithURL:(NSString*)url completion:(void (^)(NSNumber *, NSError *))completion;
+- (void)requestMoviePosterWithURL:(NSString*)url completion:(void (^)(UIImage *, NSError *))completion;
+- (void)requestPopularMoviesFromPage:(NSNumber*)page completion:(void (^)(NSDictionary *, NSError *))completion;
+- (void)requestNowPlayingMoviesFromPage:(NSNumber*)page completion:(void (^)(NSDictionary *, NSError *))completion;
+@end

@@ -45,12 +45,12 @@
 
         cell.nameLabel.text = self.movie.title;
         
-        NSString *genres;
+        NSMutableString *genres;
         for (int i = 0; i < self.movie.genres.count; i++) {
             if (i == self.movie.genres.count-1) {
-                genres = @"\(self.movie.genres[i])";
+                [genres appendString:@"\(self.movie.genres[i])"];
             } else {
-                genres = @"\(self.movie.genres[i]), ";
+                [genres appendString:@"\(self.movie.genres[i])"];
             }
         }
         

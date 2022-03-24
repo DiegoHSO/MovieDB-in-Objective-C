@@ -8,9 +8,11 @@
 #ifndef Genre_h
 #define Genre_h
 
+#import <UIKit/UIKit.h>
+
 @interface Genre : NSObject
 
-@property (nonatomic, assign) int *genreID;
+@property (nonatomic, assign) NSNumber *genreID;
 @property (nonatomic, copy) NSString *title;
 
 @end

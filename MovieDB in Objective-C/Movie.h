@@ -12,7 +12,7 @@
 
 @interface Movie : NSObject
     
-@property (nonatomic, assign) int *movieID;
+@property (nonatomic, assign) NSNumber *movieID;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *movieDescription;
 @property (nonatomic, copy) NSNumber *rating;
