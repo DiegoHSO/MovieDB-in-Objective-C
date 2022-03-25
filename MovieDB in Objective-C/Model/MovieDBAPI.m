@@ -23,9 +23,8 @@
                 completion(nil, error);
             } else {
                 // success!
-                completion(dictionary, nil);
+                completion(dictionary[@"genres"], nil);
             }
-            NSLog(@"%@", dictionary[@"results"]);
         } else {
             // error from the session...maybe log it here, too
             completion(nil, error);
@@ -40,7 +39,9 @@
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString: url] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             // convert the NSData response to a dictionary
-            NSNumber *pages = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            NSNumber *pages = dictionary[@"total_pages"];
+            
             if (error) {
                 // there was a parse error...maybe log it here, too
                 completion(nil, error);
@@ -48,7 +49,6 @@
                 // success!
                 completion(pages, nil);
             }
-//            NSLog(@"%@", dictionary[@"results"]);
         } else {
             // error from the session...maybe log it here, too
             completion(nil, error);
@@ -62,15 +62,7 @@
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"%s%@", "https://image.tmdb.org/t/p/original", url]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             // convert the NSData response to a dictionary
-            UIImage *image = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-            if (error) {
-                // there was a parse error...maybe log it here, too
-                completion(nil, error);
-            } else {
-                // success!
-                completion(image, nil);
-            }
-//            NSLog(@"%@", dictionary[@"results"]);
+            completion([UIImage imageWithData:data], nil);
         } else {
             // error from the session...maybe log it here, too
             completion(nil, error);
@@ -80,20 +72,19 @@
     [dataTask resume];
 }
 
-- (void)requestPopularMoviesFromPage:(NSNumber*)page completion:(void (^)(NSDictionary *, NSError *))completion {
+- (void)requestPopularMoviesFromPage:(NSNumber*)page completion:(void (^)(NSArray *, NSError *))completion {
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"%s%@", "https://api.themoviedb.org/3/movie/popular?api_key=2c84bee7ec597369d0b15bc1d8b7d41e&language=en-US&page=", page]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             // convert the NSData response to a dictionary
-            NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            NSDictionary *dictionaries = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
             if (error) {
                 // there was a parse error...maybe log it here, too
                 completion(nil, error);
             } else {
                 // success!
-                completion(dictionary, nil);
+                completion(dictionaries[@"results"], nil);
             }
-            NSLog(@"%@", dictionary[@"results"]);
         } else {
             // error from the session...maybe log it here, too
             completion(nil, error);
@@ -103,20 +94,19 @@
     [dataTask resume];
     
 }
-- (void)requestNowPlayingMoviesFromPage:(NSNumber*)page completion:(void (^)(NSDictionary *, NSError *))completion {
+- (void)requestNowPlayingMoviesFromPage:(NSNumber*)page completion:(void (^)(NSArray *, NSError *))completion {
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"%s%@", "https://api.themoviedb.org/3/movie/now_playing?api_key=2c84bee7ec597369d0b15bc1d8b7d41e&language=en-US&page=", page]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             // convert the NSData response to a dictionary
-            NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            NSDictionary *dictionaries = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
             if (error) {
                 // there was a parse error...maybe log it here, too
                 completion(nil, error);
             } else {
                 // success!
-                completion(dictionary, nil);
+                completion(dictionaries[@"results"], nil);
             }
-            NSLog(@"%@", dictionary[@"results"]);
         } else {
             // error from the session...maybe log it here, too
             completion(nil, error);

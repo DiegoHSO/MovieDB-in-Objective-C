@@ -10,6 +10,7 @@
 #import "MovieDetailCell.h"
 #import "MovieDetailOverviewCell.h"
 #import "Movie.h"
+#import "Genre.h"
 
 @interface MovieDetailsViewController ()
 
@@ -21,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"Details";
+    self.
     self.tableView.separatorColor = [UIColor clearColor];
     // Do any additional setup after loading the view.
 }
@@ -45,17 +48,21 @@
 
         cell.nameLabel.text = self.movie.title;
         
-        NSMutableString *genres;
-        for (int i = 0; i < self.movie.genres.count; i++) {
-            if (i == self.movie.genres.count-1) {
-                [genres appendString:@"\(self.movie.genres[i])"];
+        NSMutableString *genres = [[NSMutableString alloc] init];
+        
+        for (int i = 0; i < [self.movie.genres count]; i++) {
+            if (i == [self.movie.genres count] - 1) {
+                Genre *genre = [self.movie.genres objectAtIndex:i];
+                [genres appendString:genre.title];
             } else {
-                [genres appendString:@"\(self.movie.genres[i])"];
+                Genre *genre = [self.movie.genres objectAtIndex:i];
+                [genres appendString:genre.title];
+                [genres appendString:@", "];
             }
         }
-        
+
         cell.genresLabel.text = genres;
-        cell.rateLabel.text = self.movie.rating.doubleValue == 0 ? @"TBD" : self.movie.rating.stringValue;
+        cell.rateLabel.text = self.movie.rating.doubleValue == 0 ? @"TBD" : [NSString stringWithFormat:@"%.1f", self.movie.rating.doubleValue];
         cell.poster.image = self.movie.poster;
         cell.poster.layer.cornerRadius = 10;
 

@@ -14,7 +14,7 @@
 - (void)getPopularMovies:(NSNumber*)page completion:(void (^)(NSMutableArray *, NSError *))completion;
 - (void)getNowPlayingMovies:(NSNumber*)page completion:(void (^)(NSMutableArray *, NSError *))completion;
 - (void)getMoviePoster:(NSString*)url completion:(void (^)(UIImage *, NSError *))completion;
-- (void)getGenres:(NSMutableArray*)genreIDs completion:(void (^)(NSMutableArray *, NSError *))completion;
+- (void)getGenres:(NSArray*)genreIDs completion:(void (^)(NSMutableArray *, NSError *))completion;
 - (void)getTotalPages:(NSString*)url completion:(void (^)(NSNumber *, NSError *))completion;
 
 @end

@@ -11,6 +11,6 @@
 - (void)requestGenres: (void (^)(NSDictionary *, NSError *))completion;
 - (void)requestTotalPagesWithURL:(NSString*)url completion:(void (^)(NSNumber *, NSError *))completion;
 - (void)requestMoviePosterWithURL:(NSString*)url completion:(void (^)(UIImage *, NSError *))completion;
-- (void)requestPopularMoviesFromPage:(NSNumber*)page completion:(void (^)(NSDictionary *, NSError *))completion;
-- (void)requestNowPlayingMoviesFromPage:(NSNumber*)page completion:(void (^)(NSDictionary *, NSError *))completion;
+- (void)requestPopularMoviesFromPage:(NSNumber*)page completion:(void (^)(NSArray *, NSError *))completion;
+- (void)requestNowPlayingMoviesFromPage:(NSNumber*)page completion:(void (^)(NSArray *, NSError *))completion;
 @end

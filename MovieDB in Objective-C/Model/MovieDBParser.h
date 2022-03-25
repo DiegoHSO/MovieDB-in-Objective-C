@@ -8,8 +8,9 @@
 #import <UIKit/UIKit.h>
 #import "Movie.h"
 #import "Genre.h"
+#import "MovieDBParser.h"
 
 @interface MovieDBParser : NSObject
-- (NSDictionary*)parseMovieDictionary:(Movie*)movie;
-- (NSDictionary*)parseGenreDictionary:(Genre*)genre;
+- (Movie*)parseMovieDictionary:(NSDictionary*)dictionary;
+- (Genre*)parseGenreDictionary:(NSDictionary*)dictionary;
 @end

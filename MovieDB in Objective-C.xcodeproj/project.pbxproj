@@ -38,7 +38,7 @@
 		F1F5C4D027E8FAC9005D5393 /* MovieDB_in_Objective_C.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieDB_in_Objective_C.xcdatamodel; sourceTree = "<group>"; };
 		F1F5C4D227E8FACC005D5393 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1F5C4D527E8FACC005D5393 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F1F5C4D727E8FACC005D5393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1F5C4D727E8FACC005D5393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "MovieDB in Objective-C/Supporting Files/Info.plist"; sourceTree = SOURCE_ROOT; };
 		F1F5C4D827E8FACC005D5393 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F1F5C4DF27E8FCFA005D5393 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F1F5C4E127EA38BE005D5393 /* Movie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
@@ -71,6 +71,74 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F1BEC0A227EE545B00A1544E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F1F5C4E127EA38BE005D5393 /* Movie.h */,
+				F1F5C4E727EB7FD2005D5393 /* Movie.m */,
+				F1F5C4E227EA3CE5005D5393 /* Genre.h */,
+				F1F5C4F727ECFAE8005D5393 /* Genre.m */,
+				F1F5C4F127ECB766005D5393 /* MovieDBAPI.h */,
+				F1F5C4F227ECB774005D5393 /* MovieDBAPI.m */,
+				F1F5C4F627ECF5C7005D5393 /* MovieDBParser.h */,
+				F1F5C4F427ECF5BC005D5393 /* MovieDBParser.m */,
+				F1F5C4F927ECFBDD005D5393 /* MovieDBService.h */,
+				F1F5C4FA27ECFBEF005D5393 /* MovieDBService.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F1BEC0A327EE548400A1544E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F1F5C4C927E8FAC9005D5393 /* MovieViewController.h */,
+				F1F5C4CA27E8FAC9005D5393 /* MovieViewController.m */,
+				F1F5C4E427EB7DFC005D5393 /* MovieDetailsViewController.h */,
+				F1F5C4E527EB7E0F005D5393 /* MovieDetailsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F1BEC0A427EE54C700A1544E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F1BEC0A527EE54D800A1544E /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F1BEC0A527EE54D800A1544E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F1F5C4E327EA4C31005D5393 /* MovieCell.h */,
+				07B1AA3227EB96CD00BFFFF4 /* MovieCell.m */,
+				F1F5C4EB27EBA6DF005D5393 /* MovieDetailCell.h */,
+				F1F5C4EC27EBA6EC005D5393 /* MovieDetailCell.m */,
+				F1F5C4EE27EBA6FE005D5393 /* MovieDetailOverviewCell.h */,
+				F1F5C4EF27EBA70F005D5393 /* MovieDetailOverviewCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F1BEC0A627EE54F900A1544E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F1F5C4DF27E8FCFA005D5393 /* Main.storyboard */,
+				F1F5C4D427E8FACC005D5393 /* LaunchScreen.storyboard */,
+				F1F5C4D227E8FACC005D5393 /* Assets.xcassets */,
+				F1F5C4CF27E8FAC9005D5393 /* MovieDB_in_Objective_C.xcdatamodeld */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F1BEC0A727EE552F00A1544E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F1F5C4D727E8FACC005D5393 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		F1F5C4B727E8FAC9005D5393 = {
 			isa = PBXGroup;
 			children = (
@@ -90,36 +158,16 @@
 		F1F5C4C227E8FAC9005D5393 /* MovieDB in Objective-C */ = {
 			isa = PBXGroup;
 			children = (
+				F1F5C4D827E8FACC005D5393 /* main.m */,
 				F1F5C4C327E8FAC9005D5393 /* AppDelegate.h */,
 				F1F5C4C427E8FAC9005D5393 /* AppDelegate.m */,
 				F1F5C4C627E8FAC9005D5393 /* SceneDelegate.h */,
 				F1F5C4C727E8FAC9005D5393 /* SceneDelegate.m */,
-				F1F5C4C927E8FAC9005D5393 /* MovieViewController.h */,
-				F1F5C4CA27E8FAC9005D5393 /* MovieViewController.m */,
-				F1F5C4E127EA38BE005D5393 /* Movie.h */,
-				F1F5C4E727EB7FD2005D5393 /* Movie.m */,
-				F1F5C4E227EA3CE5005D5393 /* Genre.h */,
-				F1F5C4F727ECFAE8005D5393 /* Genre.m */,
-				F1F5C4E427EB7DFC005D5393 /* MovieDetailsViewController.h */,
-				F1F5C4E527EB7E0F005D5393 /* MovieDetailsViewController.m */,
-				F1F5C4E327EA4C31005D5393 /* MovieCell.h */,
-				07B1AA3227EB96CD00BFFFF4 /* MovieCell.m */,
-				F1F5C4EB27EBA6DF005D5393 /* MovieDetailCell.h */,
-				F1F5C4EC27EBA6EC005D5393 /* MovieDetailCell.m */,
-				F1F5C4EE27EBA6FE005D5393 /* MovieDetailOverviewCell.h */,
-				F1F5C4EF27EBA70F005D5393 /* MovieDetailOverviewCell.m */,
-				F1F5C4DF27E8FCFA005D5393 /* Main.storyboard */,
-				F1F5C4D227E8FACC005D5393 /* Assets.xcassets */,
-				F1F5C4D427E8FACC005D5393 /* LaunchScreen.storyboard */,
-				F1F5C4D727E8FACC005D5393 /* Info.plist */,
-				F1F5C4D827E8FACC005D5393 /* main.m */,
-				F1F5C4F127ECB766005D5393 /* MovieDBAPI.h */,
-				F1F5C4F227ECB774005D5393 /* MovieDBAPI.m */,
-				F1F5C4F627ECF5C7005D5393 /* MovieDBParser.h */,
-				F1F5C4F427ECF5BC005D5393 /* MovieDBParser.m */,
-				F1F5C4F927ECFBDD005D5393 /* MovieDBService.h */,
-				F1F5C4FA27ECFBEF005D5393 /* MovieDBService.m */,
-				F1F5C4CF27E8FAC9005D5393 /* MovieDB_in_Objective_C.xcdatamodeld */,
+				F1BEC0A227EE545B00A1544E /* Model */,
+				F1BEC0A427EE54C700A1544E /* View */,
+				F1BEC0A327EE548400A1544E /* Controller */,
+				F1BEC0A627EE54F900A1544E /* Resources */,
+				F1BEC0A727EE552F00A1544E /* Supporting Files */,
 			);
 			path = "MovieDB in Objective-C";
 			sourceTree = "<group>";
@@ -344,7 +392,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TA9GQL43ZA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MovieDB in Objective-C/Info.plist";
+				INFOPLIST_FILE = "MovieDB in Objective-C/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -371,7 +419,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TA9GQL43ZA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MovieDB in Objective-C/Info.plist";
+				INFOPLIST_FILE = "MovieDB in Objective-C/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

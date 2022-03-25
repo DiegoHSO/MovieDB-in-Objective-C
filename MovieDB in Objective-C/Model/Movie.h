@@ -19,7 +19,7 @@
 @property (nonatomic, copy) NSString *posterURL;
 @property (nonatomic, copy) UIImage *poster;
 @property (nonatomic, copy) NSArray *genreIDs;
-@property (nonatomic, copy) NSArray *genres;
+@property (nonatomic, retain) NSMutableArray *genres;
 
 @end
 

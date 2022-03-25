@@ -27,13 +27,14 @@
     movie.rating = rating;
     movie.posterURL = posterURL;
     movie.genreIDs = genreIDs;
+    movie.genres = [[NSMutableArray alloc] init];
     
     return movie;
 }
 
 - (Genre*)parseGenreDictionary:(NSDictionary*)dictionary {
     NSNumber *genreID = dictionary[@"id"];
-    NSString *name = dictionary[@"title"];
+    NSString *name = dictionary[@"name"];
     
     Genre *genre = [[Genre alloc] init];
     genre.title = name;
