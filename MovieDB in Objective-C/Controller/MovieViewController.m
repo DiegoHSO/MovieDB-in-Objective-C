@@ -20,10 +20,13 @@
 {
     NSMutableArray *popularMovies;
     NSMutableArray *nowPlayingMovies;
+    NSMutableArray *filteredPopularMovies;
+    NSMutableArray *filteredNowPlayingMovies;
     NSNumber *popularMoviesTotalPages;
     NSNumber *nowPlayingMoviesTotalPages;
     NSNumber *popularMoviesPage;
     NSNumber *nowPlayingMoviesPage;
+    UISearchController *searchController;
     MovieDBService *service;
 }
 
@@ -31,6 +34,8 @@
 {
     if ((self = [super initWithCoder:aDecoder]))
     {
+        filteredPopularMovies = [[NSMutableArray alloc] init];
+        filteredNowPlayingMovies = [[NSMutableArray alloc] init];
         popularMovies = [[NSMutableArray alloc] init];
         nowPlayingMovies = [[NSMutableArray alloc] init];
         popularMoviesPage = [NSNumber numberWithInt:1];
@@ -125,8 +130,49 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    searchController = [[UISearchController alloc] init];
+    self.navigationItem.searchController = searchController;
+    [searchController.searchResultsUpdater self];
+    searchController.obscuresBackgroundDuringPresentation = NO;
+    
+    
     self.title = @"Movies";
     self.tableView.separatorColor = [UIColor clearColor];
+}
+
+- (void)updateData {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateData:self.navigationItem.searchController.searchBar.text];
+        [self.tableView reloadData];
+    });
+}
+
+- (void)updateData:(NSString*)searchText {
+    if ([searchText isEqual: @""]) {
+        filteredPopularMovies = popularMovies;
+        filteredNowPlayingMovies = nowPlayingMovies;
+    }
+    
+    else {
+        [filteredNowPlayingMovies removeAllObjects];
+        [filteredPopularMovies removeAllObjects];
+        for (Movie* movie in popularMovies) {
+            if ([movie.title.lowercaseString containsString:searchText.lowercaseString]) {
+                if ([popularMovies containsObject:movie] && ![filteredPopularMovies containsObject:movie]) {
+                    [filteredPopularMovies addObject:movie];
+                }
+            }
+        }
+        
+        for (Movie* movie in nowPlayingMovies) {
+            if ([movie.title.lowercaseString containsString:searchText.lowercaseString]) {
+                if ([nowPlayingMovies containsObject:movie] && ![filteredNowPlayingMovies containsObject:movie]) {
+                    [filteredNowPlayingMovies addObject:movie];
+                }
+            }
+        }
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -137,9 +183,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return [popularMovies count];
+        return [filteredPopularMovies count]+1;
     } else {
-        return [nowPlayingMovies count];
+        return [filteredNowPlayingMovies count]+1;
     }
 }
 
@@ -149,7 +195,7 @@
     
     /*
     if (indexPath.section == 0) {
-        if ([popularMoviesPage intValue] <= [popularMoviesTotalPages intValue]) {
+        if ([indexPath row] == [filteredPopularMovies count] - 1 && [popularMoviesPage intValue] <= [popularMoviesTotalPages intValue]) {
             [service getPopularMovies:popularMoviesPage completion:^(NSMutableArray *movies, NSError *error) {
                 if (error) {
                     NSLog(@"error fetching movies");
@@ -195,7 +241,7 @@
     
     
     if (indexPath.section == 1) {
-        if ([nowPlayingMoviesPage intValue] <= [nowPlayingMoviesTotalPages intValue]) {
+        if ([indexPath row] == [filteredNowPlayingMovies count] - 1 && [nowPlayingMoviesPage intValue] <= [nowPlayingMoviesTotalPages intValue]) {
             [service getNowPlayingMovies:nowPlayingMoviesPage completion:^(NSMutableArray *movies, NSError *error) {
                 if (error) {
                     NSLog(@"error fetching movies");
@@ -208,7 +254,7 @@
                             } else {
                                 movie.poster = image;
                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                    [self.tableView reloadData];
+                                    [self updateData];
                                 });
                             }
                         }];
@@ -223,7 +269,7 @@
                                         if (genreID.intValue == genre.genreID.intValue) {
                                             [movie.genres addObject:genre];
                                             dispatch_async(dispatch_get_main_queue(), ^{
-                                                [self.tableView reloadData];
+                                                [self updateData];
                                             });
                                         }
                                     }
@@ -247,7 +293,7 @@
         if (indexPath.row > 0) {
             MovieCell *cell = (MovieCell *)[tableView dequeueReusableCellWithIdentifier:movieCellIdentifier];
             
-            Movie *movie = (popularMovies)[indexPath.row];
+            Movie *movie = (filteredPopularMovies)[indexPath.row];
             
             cell.nameLabel.text = movie.title;
             cell.descriptionLabel.text = movie.movieDescription;
@@ -276,7 +322,7 @@
         if (indexPath.row > 0) {
             MovieCell *cell = (MovieCell *)[tableView dequeueReusableCellWithIdentifier:movieCellIdentifier];
             
-            Movie *movie = (nowPlayingMovies)[indexPath.row];
+            Movie *movie = (filteredNowPlayingMovies)[indexPath.row];
             
             cell.nameLabel.text = movie.title;
             cell.descriptionLabel.text = movie.movieDescription;
@@ -310,9 +356,19 @@
     if ([segue.identifier isEqualToString:@"detail"]) {
         
         MovieDetailsViewController *vc = [segue destinationViewController];
-        NSInteger index = [(NSIndexPath *)sender row];
-        vc.movie = popularMovies[index];
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
+        if ([indexPath section] == 0) {
+            vc.movie = filteredPopularMovies[[indexPath row]];
+        } else {
+            vc.movie = filteredNowPlayingMovies[[indexPath row]];
+        }
+        
     }
+}
+
+- (void)updateSearchResults:(UISearchController*)searchController {
+    [self updateData:searchController.searchBar.text];
+    [self.tableView reloadData];
 }
 
 @end

@@ -8,4 +8,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MovieViewController : UITableViewController
+- (void)updateData:(NSString*)searchText;
+- (void)updateData;
 @end
